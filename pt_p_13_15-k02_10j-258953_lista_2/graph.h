@@ -2,13 +2,13 @@
 #include "timeMeasurement.h"
 #include "SH.h"
 
-class graph
+class Graph
 {
 public:
 
 
-	graph();
-	~graph();
+	Graph();
+	~Graph();
 
 	bool readFromFile();
 	bool generate();

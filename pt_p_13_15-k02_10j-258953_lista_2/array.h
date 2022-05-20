@@ -1,12 +1,12 @@
 #pragma once
-class array
+class Array
 {
 public:
 	int iTSize;
 	int *newArray = nullptr;
 	
-	array();
-	~array();
+	Array();
+	~Array();
 
 	void push();
 	void pop();

@@ -1,4 +1,4 @@
-#include "graph.h"
+#include "Graph.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -8,32 +8,32 @@
 #include <chrono>
 #include <ratio>
 
-graph::graph()
+Graph::Graph()
 {
 
 }
 
-graph::~graph()
+Graph::~Graph()
 {
 
 }
 
-bool graph::readFromFile()
+bool Graph::readFromFile()
 {
 
 }
 
-bool graph::generate()
+bool Graph::generate()
 {
 
 }
 
-bool graph::clearAll()
+bool Graph::clearAll()
 {
 
 }
 
-void graph::display()
+void Graph::display()
 {
 
 }

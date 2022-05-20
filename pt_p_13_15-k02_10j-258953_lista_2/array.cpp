@@ -1,31 +1,31 @@
-#include "array.h"
+#include "Array.h"
 
 #include <iostream>
 #include <stdlib.h>
 
 using namespace std;
 
-array::array()
+Array::Array()
 {
 
 }
 
-array::~array()
+Array::~Array()
 {
 
 }
 
-void array::push()
+void Array::push()
 {
 
 }
 
-void array::pop()
+void Array::pop()
 {
 
 }
 
-void array::clearAllArray()
+void Array::clearAllArray()
 {
 
 }
