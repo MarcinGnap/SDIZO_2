@@ -10,7 +10,7 @@
 
 Graph::Graph()
 {
-
+	uiGTopAmount = 0;
 }
 
 Graph::~Graph()
