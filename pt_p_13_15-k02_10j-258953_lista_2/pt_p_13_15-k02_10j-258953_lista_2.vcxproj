@@ -123,6 +123,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainWindow.cpp" />
+    <ClCompile Include="SH.cpp" />
+    <ClCompile Include="timeMeasurement.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mainWindow.h" />
+    <ClInclude Include="SH.h" />
+    <ClInclude Include="timeMeasurement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
