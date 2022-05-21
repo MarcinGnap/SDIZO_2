@@ -8,8 +8,12 @@ public:
 	Array();
 	~Array();
 
-	void push(int);
+	void pushFront(int);
+	void pushEnd(int);
 	void pushMid(int, int);
-	void pop();
+	void popFront();
+	void popEnd();
+	void popMiddleIndex(int);
+	bool popMiddleValue(int);
 	void clearAllArray();
 };
