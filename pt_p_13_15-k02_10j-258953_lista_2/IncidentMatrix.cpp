@@ -1,13 +1,16 @@
 #include "IncidentMatrix.h"
 
+using namespace std;
+
+//	Kontruktor.
 IncidentMatrix::IncidentMatrix(size_t edgeNumber, size_t vertexNumber, size_t* data)
 {
-	this->vertexNumber = vertexNumber;
-	this->edgeNumber = edgeNumber;
-	this->edgeValues = new size_t[edgeNumber];
-	this->matrixHandler = new CellType*[vertexNumber];
+	this->vertexNumber = vertexNumber;											//	Liczba wierzcho³ków.
+	this->edgeNumber = edgeNumber;												//	Liczba krawêdzi.
+	this->edgeValues = new size_t[edgeNumber];									//	Tablica przechowuj¹ca wagi krawêdzi.
+	this->matrixHandler = new CellType*[vertexNumber];							//	Macierz.
 
-	for (size_t i = 0; i < vertexNumber; i++)
+	for (size_t i = 0; i < vertexNumber; i++)									//	Tworzenie dwuwymiarowej tablicy wype³nionej zerami.
 	{
 		this->matrixHandler[i] = new CellType[edgeNumber];
 
@@ -16,7 +19,8 @@ IncidentMatrix::IncidentMatrix(size_t edgeNumber, size_t vertexNumber, size_t* d
 			this->matrixHandler[i][j] = CellType::empty;
 		}
 	}
-
+	
+	//	Wype³nianie danych w macierzy za pomoc¹ danych przes³anych ze struktury.
 	int dataIndex = 0;
 	int valueIndex = 0;
 	for (size_t i = 0; i < edgeNumber; i++)
@@ -32,6 +36,7 @@ IncidentMatrix::IncidentMatrix(size_t edgeNumber, size_t vertexNumber, size_t* d
 	}
 }
 
+//	Destruktor.
 IncidentMatrix::~IncidentMatrix()
 {
 	if (matrixHandler != nullptr)
@@ -44,35 +49,41 @@ IncidentMatrix::~IncidentMatrix()
 	}
 }
 
-void IncidentMatrix::print(std::ostream& out)
+//	Wyœwietlenie macierzy.
+void IncidentMatrix::print()
 {
-	out << "    ";
+
+	cout << std::endl << "v  ";
 
 	for (size_t i = 0; i < this->edgeNumber; i++)
 	{
-		out << i << "    ";
+		cout << std::setw(2) << this->edgeValues[i] << " | ";
 	}
 
-	out << std::endl << std::endl;
+	cout << endl << endl << "      ";
+
+	for (size_t i = 0; i < this->edgeNumber; i++)
+	{
+		cout << i << "    ";
+	}
+	cout << endl;
+	for (size_t i = 0; i < this->edgeNumber; i++)
+	{
+		cout << "-----";
+	}
+
+	cout << "----" << endl;
 
 	for (size_t i = 0; i < this->vertexNumber; i++)
 	{
-		out << i << "  ";
+		cout << " " << i << " | ";
 		for (size_t j = 0; j < this->edgeNumber; j++)
 		{
-			out << std::setw(2) << int(this->matrixHandler[i][j]) << " | ";
+			cout << std::setw(2) << int(this->matrixHandler[i][j]) << " | ";
 		}
-		out << std::endl;
+		cout << std::endl;
 	}
-
-	out << std::endl << "v  ";
-
-	for (size_t i = 0; i < this->edgeNumber; i++)
-	{
-		out << std::setw(2) << this->edgeValues[i] << " | ";
-	}
-
-	out << std::endl;
+	cout << std::endl;
 }
 
 size_t IncidentMatrix::getVertexNumber()

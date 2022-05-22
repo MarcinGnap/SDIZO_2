@@ -9,7 +9,7 @@ class IncidentMatrix
 public:
 	IncidentMatrix(size_t edgeNumber, size_t vertexNumber, size_t* data);
 	~IncidentMatrix();
-	void print(std::ostream& out);
+	void print();
 	size_t getVertexNumber();
 	size_t getEdgeNumber();
 	CellType** getMatrix();

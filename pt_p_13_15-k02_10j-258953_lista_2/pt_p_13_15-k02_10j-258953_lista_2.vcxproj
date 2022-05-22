@@ -124,23 +124,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="array.cpp" />
-    <ClCompile Include="ArrayofArrays.cpp" />
-    <ClCompile Include="graph.cpp" />
     <ClCompile Include="IncidentMatrix.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainWindow.cpp" />
+    <ClCompile Include="NeighborhoodList.cpp" />
     <ClCompile Include="SH.cpp" />
     <ClCompile Include="timeMeasurement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array.h" />
-    <ClInclude Include="ArrayofArrays.h" />
     <ClInclude Include="CellType.h" />
     <ClInclude Include="Edge.h" />
-    <ClInclude Include="graph.h" />
     <ClInclude Include="IncidentMatrix.h" />
     <ClInclude Include="mainWindow.h" />
     <ClInclude Include="MatrixCell.h" />
+    <ClInclude Include="NeighborhoodList.h" />
     <ClInclude Include="SH.h" />
     <ClInclude Include="timeMeasurement.h" />
   </ItemGroup>
