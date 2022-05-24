@@ -18,7 +18,7 @@ NeighborhoodList::NeighborhoodList(size_t edgeNumber, size_t vertexNumber, size_
 
 	Edge* edge = nullptr;									//	Stworzenie krawêdzi.
 	size_t dataNumber = 3 * edgeNumber;						//	Iloœæ przechowywanych liczb.
-	size_t currentIndex = 0;
+	size_t currentIndex = 0;								//	Pomocnicza zmienna wykorzystywana w pêtli.
 
 	while (currentIndex < dataNumber)						//	Pêtla wykonuj¹ca siê dopóki nie skoñcz¹ siê dane w podanej tablicy.
 	{
@@ -48,17 +48,17 @@ NeighborhoodList::~NeighborhoodList()
 {
 	if (this->edges != nullptr)
 	{
-		Edge* edgeToDelete = nullptr;
-		for (size_t i = 0; i < this->vertexNumber; i++)
+		Edge* edgeToDelete = nullptr;									//	Stworzenie tymczasowej krawêdzi bez zawartoœci w celu usprawnienia usuwania listy.
+		for (size_t i = 0; i < this->vertexNumber; i++)					//	Pêtla wykonuj¹ca siê od pierwszego do ostatniego wierzcho³ka.
 		{
-			edgeToDelete = this->edges[i];
+			edgeToDelete = this->edges[i];								//	Przypisujemy aktualnie usuwan¹ krawêdŸ do tymczasowej zmiennej.
 
-			if (edgeToDelete == nullptr)
+			if (edgeToDelete == nullptr)								//	Jeœli krawêdŸ nie ma zawartoœci to pêtla zostaje przerwana.
 			{
 				continue;
 			}
 
-			while (edgeToDelete->next != nullptr)
+			while (edgeToDelete->next != nullptr)						//	Jeœli jest kolejna krawêdŸ do usuniêcia pêtla siê wykona.
 			{
 				edgeToDelete = edgeToDelete->next;
 				delete edgeToDelete->previous;
