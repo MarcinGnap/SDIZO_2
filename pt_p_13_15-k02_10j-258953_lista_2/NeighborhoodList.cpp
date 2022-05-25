@@ -53,19 +53,19 @@ NeighborhoodList::~NeighborhoodList()
 		{
 			edgeToDelete = this->edges[i];								//	Przypisujemy aktualnie usuwan¹ krawêdŸ do tymczasowej zmiennej.
 
-			if (edgeToDelete == nullptr)								//	Jeœli krawêdŸ nie ma zawartoœci to pêtla zostaje przerwana.
+			if (edgeToDelete == nullptr)								//	Jeœli krawêdŸ nie ma zawartoœci to pêtla zostaje przesuniêta do nastêpnego kroku.
 			{
 				continue;
 			}
 
 			while (edgeToDelete->next != nullptr)						//	Jeœli jest kolejna krawêdŸ do usuniêcia pêtla siê wykona.
 			{
-				edgeToDelete = edgeToDelete->next;
-				delete edgeToDelete->previous;
+				edgeToDelete = edgeToDelete->next;						//	Zmiana adresu usuwanej krawêdzi na kolejn¹ krawêdŸ.
+				delete edgeToDelete->previous;							//	Usuwamy jedn¹ krawêdŸ.
 			}
 			delete edgeToDelete;
 		}
-		delete[] this->edges;
+		delete[] this->edges;											//	Po usuniêiu zawartoœci tablicy zawieraj¹cej dane krawêdzi, usuwamy tablicê.
 	}
 }
 
