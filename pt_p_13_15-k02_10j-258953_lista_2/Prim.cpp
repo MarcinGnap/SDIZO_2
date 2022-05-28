@@ -7,7 +7,7 @@ IncidentMatrix* Prim::generateMst(IncidentMatrix* incidentMatrix)
 	size_t vertexNumber = incidentMatrix->getVertexNumber();
 	size_t edgeNumber = incidentMatrix->getEdgeNumber();
 	size_t* values = incidentMatrix->getValues();
-	MatrixCell** matrix = incidentMatrix->getMatrix();
+	CellType** matrix = incidentMatrix->getMatrix();
 	size_t resultSize = (vertexNumber - 1) * 3;
 	size_t* resultBuffor = new size_t[resultSize];
 	size_t resultIndex = 0;
@@ -24,14 +24,14 @@ IncidentMatrix* Prim::generateMst(IncidentMatrix* incidentMatrix)
 	{
 		for (size_t begin = 0; begin < edgeNumber; begin++)
 		{
-			if (matrix[currentVertexIndex][begin] == MatrixCell::None)
+			if (matrix[currentVertexIndex][begin] == CellType::empty)
 			{
 				continue;
 			}
 
 			for (size_t end = 0; end < vertexNumber; end++)
 			{
-				if (matrix[end][begin] == MatrixCell::None || end == currentVertexIndex)
+				if (matrix[end][begin] == CellType::empty || end == currentVertexIndex)
 				{
 					continue;
 				}

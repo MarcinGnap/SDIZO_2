@@ -126,6 +126,7 @@
     <ClCompile Include="array.cpp" />
     <ClCompile Include="EdgeHeap.cpp" />
     <ClCompile Include="IncidentMatrix.cpp" />
+    <ClCompile Include="Kruskal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainWindow.cpp" />
     <ClCompile Include="NeighborhoodList.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Edge.h" />
     <ClInclude Include="EdgeHeap.h" />
     <ClInclude Include="IncidentMatrix.h" />
+    <ClInclude Include="Kruskal.h" />
     <ClInclude Include="mainWindow.h" />
     <ClInclude Include="MatrixCell.h" />
     <ClInclude Include="NeighborhoodList.h" />
