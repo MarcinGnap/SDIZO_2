@@ -131,6 +131,7 @@
     <ClCompile Include="mainWindow.cpp" />
     <ClCompile Include="NeighborhoodList.cpp" />
     <ClCompile Include="Prim.cpp" />
+    <ClCompile Include="Reader.cpp" />
     <ClCompile Include="SH.cpp" />
     <ClCompile Include="timeMeasurement.cpp" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="MatrixCell.h" />
     <ClInclude Include="NeighborhoodList.h" />
     <ClInclude Include="Prim.h" />
+    <ClInclude Include="Reader.h" />
     <ClInclude Include="SH.h" />
     <ClInclude Include="timeMeasurement.h" />
   </ItemGroup>
