@@ -1,19 +1,24 @@
 #pragma once
+
+#include <iostream>
+
+template <typename T>
 class Array
 {
 public:
-	int iASize;
-	int *newArray = nullptr;
-	
 	Array();
+	Array(const Array<T>& array);
 	~Array();
-
-	void pushFront(int);
-	void pushEnd(int);
-	void pushMid(int, int);
-	void popFront();
-	void popEnd();
-	void popMiddleIndex(int);
-	bool popMiddleValue(int);
-	void clearAllArray();
+	virtual void addFront(const T& data);
+	virtual void addBack(const  T& data);
+	virtual bool addAt(const size_t& index, const T& data);
+	virtual bool search(const T& data);
+	virtual bool removeFront();
+	virtual bool removeBack();
+	virtual bool removeAt(const size_t& index);
+	virtual void print(std::ostream& out);
+	virtual size_t getSize();
+private:
+	T* head;
+	size_t size;
 };

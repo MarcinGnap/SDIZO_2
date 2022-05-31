@@ -1,170 +1,235 @@
 #include "Array.h"
-
-#include <iostream>
-#include <stdlib.h>
+#include "PathEdge.h"
 
 using namespace std;
 
-Array::Array()
+template <typename T>
+Array<T>::Array() : head(nullptr), size(0) 
 {
-	iASize = 0;
-	newArray = new int[iASize];
+
 }
 
-Array::~Array()
+template <typename T>
+Array<T>::Array(const Array<T>& array)
 {
-	newArray = nullptr;
-}
-
-void Array::pushFront(int iAPushFront)
-{
-	int iATempSize = iASize + 1;
-	auto tempArray = new int[iASize + 1];
-
-	tempArray[0] = iAPushFront;
-	if (iASize != 0)
+	this->head = new T[array.size];
+	for (size_t i = 0; i < array.size; i++)
 	{
-		for (int i = iATempSize; i >= 1; i--)
-		{
-			tempArray[i] = newArray[i - 1];
-		}
+		this->head[i] = array.head[i];
 	}
-	delete[] newArray;
-	newArray = tempArray;
-	tempArray = nullptr;
-	iASize++;
+	this->size = array.size;
 }
 
-void Array::pushEnd(int iAPushElement)
+template <typename T>
+Array<T>::~Array()
 {
-	auto tempArray = new int[iASize + 1];
-
-	tempArray[iASize] = iAPushElement;
-	if (iASize != 0)
+	if (this->head != nullptr)
 	{
-		for (int i = 0; i < iASize; i++)
-		{
-			tempArray[i] = newArray[i];
-		}
-	}
-	delete[] newArray;
-	newArray = tempArray;
-	tempArray = nullptr;
-	iASize++;
-}
-
-void Array::pushMid(int iAPushPosition, int iAPushValue)
-{
-	if (iAPushPosition >= 0 && iAPushPosition <= iASize)
-	{
-		auto tempArray = new int[iASize + 1];
-		tempArray[iAPushPosition] = iAPushValue;
-		for (int i = 0; i < iAPushPosition; i++)
-		{
-			tempArray[i] = newArray[i];
-		}
-		for (int i = iAPushPosition + 1; i < iASize + 1; i++)
-		{
-			tempArray[i] = newArray[i - 1];
-		}
-		delete[] newArray;
-		newArray = tempArray;
-		tempArray = nullptr;
-		iASize++;
+		delete[] this->head;
 	}
 }
 
-void Array::popFront()
+template <typename T>
+void Array<T>::addFront(const T& data)
 {
-	if (iASize != 0)
-	{
-		auto tempArray = new int[iASize - 1];
+	T* newHead = new T[this->size + 1];
+	newHead[0] = data;
 
-		for (int i = iASize - 1; i >= 0; i--)
+	// Copy data if exists
+	if (this->head != nullptr)
+	{
+		for (size_t i = 0; i < this->size; i++)
 		{
-			tempArray[i] = newArray[i + 1];
+			newHead[i + 1] = this->head[i];
 		}
-		delete[] newArray;
-		newArray = tempArray;
-		tempArray = nullptr;
-		iASize--;
+
+		// Delete old dynamic array
+		delete[] this->head;
 	}
+
+	this->size++;
+	this->head = newHead;
 }
 
-void Array::popEnd()
+template <typename T>
+void Array<T>::addBack(const T& data)
 {
-	if (iASize != 0)
-	{
-		auto tempArray = new int[iASize - 1];
+	T* newHead = new T[this->size + 1];
+	newHead[this->size] = data;
 
-		for (int i = 0; i < iASize - 1; i++)
+	// Copy data if exists
+	if (this->head != nullptr)
+	{
+		for (size_t i = 0; i < this->size; i++)
 		{
-			tempArray[i] = newArray[i];
+			newHead[i] = this->head[i];
 		}
-		delete[] newArray;
-		newArray = tempArray;
-		tempArray = nullptr;
-		iASize--;
+
+		// Delete old dynamic array
+		delete[] this->head;
 	}
+
+	this->size++;
+	this->head = newHead;
 }
 
-void Array::popMiddleIndex(int iAPopIndex)
+template <typename T>
+bool Array<T>::addAt(const size_t& index, const T& data)
 {
-	if (iAPopIndex >= 0 && iAPopIndex < iASize)
+	// Check if index is correct
+	if (index > this->size)
 	{
-		auto tempArray = new int[iASize - 1];
-
-		for (int i = 0; i < iAPopIndex; i++)
-		{
-			tempArray[i] = newArray[i];
-		}
-		for (int i = iAPopIndex; i < iASize; i++)
-		{
-			tempArray[i] = newArray[i + 1];
-		}
-		delete[] newArray;
-		newArray = tempArray;
-		tempArray = nullptr;
-		iASize--;
+		return false;
 	}
+
+	T* newHead = new T[this->size + 1];
+	newHead[index] = data;
+
+	// Copy elements before specific index
+	for (size_t i = 0; i < index; i++)
+	{
+		newHead[i] = this->head[i];
+	}
+
+	// Copy elements after specific index
+	for (size_t i = index + 1; i <= size; i++)
+	{
+		newHead[i] = this->head[i - 1];
+	}
+
+	delete[] this->head;
+	this->size++;
+	this->head = newHead;
+	return true;
 }
 
-bool Array::popMiddleValue(int iAPopValue)
+template <typename T>
+bool Array<T>::search(const T& data)
 {
-	if (iASize != 0)
+	if (this->size == 0)
 	{
-		for (int i = 0; i < iASize; i++)
-		{
-			if (iAPopValue == newArray[i])
-			{
-				auto tempArray = new int[iASize - 1];
-				for (int j = 0; j < i; j++)
-				{
-					tempArray[j] = newArray[j];
-				}
-				for (int j = i; j < iASize; j++)
-				{
-					tempArray[j] = newArray[j + 1];
-				}
-				delete[] newArray;
-				newArray = tempArray;
-				tempArray = nullptr;
-				iASize--;
+		return false;
+	}
 
-				return true;
-			}
+	for (size_t i = 0; i < this->size; i++)
+	{
+		if (this->head[i] == data)
+		{
+			return true;
 		}
 	}
+
 	return false;
 }
 
-void Array::clearAllArray()
+template <typename T>
+bool Array<T>::removeFront()
 {
-	if (iASize != 0)
+	// Check if any data exists
+	if (this->head == nullptr)
 	{
-		delete[] this->newArray;
-		this->newArray = nullptr;
-		this->iASize = 0;
-
+		return false;
 	}
+
+	T* newHead = nullptr;
+
+	// Copy data if needed
+	if (this->size > 1)
+	{
+		newHead = new T[size - 1];
+		for (size_t i = 1; i < this->size; i++)
+		{
+			newHead[i - 1] = this->head[i];
+		}
+	}
+
+	delete[] this->head;
+	this->size--;
+	this->head = newHead;
+	return true;
 }
+
+template <typename T>
+bool Array<T>::removeBack()
+{
+	// Check if any data exists
+	if (this->head == nullptr)
+	{
+		return false;
+	}
+
+	T* newHead = nullptr;
+	this->size--;
+
+	// Copy data if needed
+	if (this->size >= 1)
+	{
+		newHead = new T[size];
+		for (size_t i = 0; i < this->size; i++)
+		{
+			newHead[i] = this->head[i];
+		}
+	}
+
+	delete[] this->head;
+	this->head = newHead;
+	return true;
+}
+
+template <typename T>
+bool Array<T>::removeAt(const size_t& index)
+{
+	// Check if index is correct
+	if (index >= this->size)
+	{
+		return false;
+	}
+
+	T* newHead = nullptr;
+
+	// Copy data if needed
+	if (this->size > 1)
+	{
+		newHead = new T[size - 1];
+
+		// Copy data before index
+		for (size_t i = 0; i < index; i++)
+		{
+			newHead[i] = this->head[i];
+		}
+
+		// Copy data after index
+		for (size_t i = index + 1; i < size; i++)
+		{
+			newHead[i - 1] = this->head[i];
+		}
+	}
+
+	delete[] this->head;
+	this->size--;
+	this->head = newHead;
+	return true;
+}
+
+template <typename T>
+void Array<T>::print(std::ostream& out)
+{
+	if (this->size > 0 && this->head != nullptr)
+	{
+		for (size_t i = 0; i < this->size; i++)
+		{
+			out << i << "> " << this->head[i] << std::endl;
+		}
+		return;
+	}
+	out << "Data structure is empty" << std::endl;
+}
+
+template <typename T>
+size_t Array<T>::getSize()
+{
+	return this->size;
+}
+
+// The only one data type necessary in this project
+template class Array<PathEdge>;

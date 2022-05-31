@@ -123,29 +123,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="array.cpp" />
+    <ClCompile Include="Array.cpp" />
+    <ClCompile Include="BellmanFord.cpp" />
+    <ClCompile Include="Dijkstra.cpp" />
     <ClCompile Include="EdgeHeap.cpp" />
+    <ClCompile Include="Generator.cpp" />
     <ClCompile Include="IncidentMatrix.cpp" />
     <ClCompile Include="Kruskal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainWindow.cpp" />
     <ClCompile Include="NeighborhoodList.cpp" />
+    <ClCompile Include="Path.cpp" />
     <ClCompile Include="Prim.cpp" />
     <ClCompile Include="Reader.cpp" />
     <ClCompile Include="SH.cpp" />
     <ClCompile Include="timeMeasurement.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="array.h" />
+    <ClInclude Include="Array.h" />
+    <ClInclude Include="BellmanFord.h" />
     <ClInclude Include="CellType.h" />
+    <ClInclude Include="Dijkstra.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="EdgeHeap.h" />
+    <ClInclude Include="Generator.h" />
     <ClInclude Include="IncidentMatrix.h" />
     <ClInclude Include="Kruskal.h" />
     <ClInclude Include="mainWindow.h" />
     <ClInclude Include="MatrixCell.h" />
     <ClInclude Include="NeighborhoodList.h" />
+    <ClInclude Include="Path.h" />
+    <ClInclude Include="PathEdge.h" />
     <ClInclude Include="Prim.h" />
+    <ClInclude Include="RawGraphData.h" />
     <ClInclude Include="Reader.h" />
     <ClInclude Include="SH.h" />
     <ClInclude Include="timeMeasurement.h" />
