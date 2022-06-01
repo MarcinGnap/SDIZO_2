@@ -2,6 +2,8 @@
 #include "IncidentMatrix.h"
 #include "NeighborhoodList.h"
 #include "SH.h"
+#include "Generator.h"
+#include "Reader.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -34,6 +36,7 @@ void mainWindow::mainMenu()
 
 	auto newMatrix = new IncidentMatrix(9, 6, tab);
 	auto newList = new NeighborhoodList(9, 6, tab);
+	auto newGenerator = new Generator();
 	SH shw;
 
 	short sMChoice;
@@ -51,7 +54,7 @@ void mainWindow::mainMenu()
 			"\t6.Algorytm Kruskala.\n"
 			"\t7.Algorytm Dijkstry.\n"
 			"\t8.Algorytm Forda-Bellmana.\n"
-			"\t9.Algorytm Forda-Fulkersona.\n"
+			"\t9.Pomiary czasu.\n"
 			"\t0.Wyjscie.\n";
 		cin >> sMChoice;
 
@@ -66,6 +69,19 @@ void mainWindow::mainMenu()
 		case 2:
 		{
 			cout << "Wygenerowanie danych losowo.\n";
+			float fDensity;
+			size_t stVertexNum, stMaxValue;
+			cout << "Wybierz gestosc grafu: ";
+			cin >> fDensity;
+			cout << "Wybierz ilosc wierzcholkow: ";
+			cin >> stVertexNum;
+			cout << "Wybierz maksymalna wage krawedzi: ";
+			cin >> stMaxValue;
+			newMatrix = nullptr;
+			newList = nullptr;
+			RawGraphData newData = newGenerator->generate(fDensity, stVertexNum, stMaxValue);
+			newMatrix = new IncidentMatrix(newData.edgeNumber, newData.vertexNumber, newData.data);
+			newList = new NeighborhoodList(newData.edgeNumber, newData.vertexNumber, newData.data);
 			shw.done();
 			break;
 		}
@@ -111,7 +127,7 @@ void mainWindow::mainMenu()
 		}
 		case 9:
 		{
-			cout << "Algorytm Forda-Fulkersona.\n";
+			cout << "Pomiary czasu.\n";
 			shw.done();
 			break;
 		}
