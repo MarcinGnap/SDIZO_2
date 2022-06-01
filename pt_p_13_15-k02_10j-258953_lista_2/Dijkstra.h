@@ -3,6 +3,7 @@
 #include "IncidentMatrix.h"
 #include "NeighborhoodList.h"
 #include "Path.h"
+#include "PathEdge.h"
 
 class Dijkstra
 {
