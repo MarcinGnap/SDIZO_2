@@ -50,14 +50,14 @@ IncidentMatrix::~IncidentMatrix()
 }
 
 //	Wyœwietlenie macierzy.
-void IncidentMatrix::print()
+void IncidentMatrix::print(ostream& out)
 {
 
-	cout << std::endl << "v  ";
+	/*cout << std::endl << "v  ";
 
 	for (size_t i = 0; i < this->edgeNumber; i++)
 	{
-		cout << std::setw(2) << this->edgeValues[i] << " | ";
+		cout << setw(2) << this->edgeValues[i] << " | ";
 	}
 
 	cout << endl << endl << "      ";
@@ -79,11 +79,38 @@ void IncidentMatrix::print()
 		cout << " " << i << " | ";
 		for (size_t j = 0; j < this->edgeNumber; j++)
 		{
-			cout << std::setw(2) << int(this->matrixHandler[i][j]) << " | ";
+			cout << setw(2) << int(this->matrixHandler[i][j]) << " | ";
 		}
-		cout << std::endl;
+		cout << endl;
 	}
-	cout << std::endl;
+	cout << endl;*/
+	out << "   ";
+
+	for (size_t i = 0; i < this->edgeNumber; i++)
+	{
+		out << setw(2) << i << "   ";
+	}
+
+	out << endl;
+
+	for (size_t i = 0; i < this->vertexNumber; i++)
+	{
+		out << i << "  ";
+		for (size_t j = 0; j < this->edgeNumber; j++)
+		{
+			out << setw(2) << int(this->matrixHandler[i][j]) << " | ";
+		}
+		out << endl;
+	}
+
+	out << "v  ";
+
+	for (size_t i = 0; i < this->edgeNumber; i++)
+	{
+		out << setw(2) << this->edgeValues[i] << " | ";
+	}
+
+	out << endl;
 }
 
 size_t IncidentMatrix::getVertexNumber()

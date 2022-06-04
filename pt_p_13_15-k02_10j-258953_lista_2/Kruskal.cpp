@@ -35,9 +35,8 @@ IncidentMatrix* Kruskal::generateMst(IncidentMatrix* incidentMatrix)
 			{
 				tempEdge->destination = vertex;
 			}
-
-			heap->push(tempEdge);
 		}
+		heap->push(tempEdge);
 	}
 
 	while (!heap->empty())

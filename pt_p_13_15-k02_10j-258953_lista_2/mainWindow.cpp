@@ -54,7 +54,7 @@ void mainWindow::mainMenu()
 			"\t6.Algorytm Kruskala.\n"
 			"\t7.Algorytm Dijkstry.\n"
 			"\t8.Algorytm Forda-Bellmana.\n"
-			"\t9.Pomiary czasu.\n"
+			"\t9.Test.\n"
 			"\t0.Wyjscie.\n";
 		cin >> sMChoice;
 
@@ -95,7 +95,7 @@ void mainWindow::mainMenu()
 		{
 			cout << "Wyswietlenie grafu.\n" 
 					"Macierz incydencji:\n";
-			newMatrix->print();
+			newMatrix->print(cout);
 			cout << "\n \n Lista sasiedztwa: \n";
 			newList->print();
 			shw.done();
@@ -127,7 +127,11 @@ void mainWindow::mainMenu()
 		}
 		case 9:
 		{
-			cout << "Pomiary czasu.\n";
+			cout << "Pomiary czasu.\n"
+				"Aka Test\n";
+
+
+
 			shw.done();
 			break;
 		}

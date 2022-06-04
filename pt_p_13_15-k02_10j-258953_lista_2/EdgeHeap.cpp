@@ -4,7 +4,7 @@
 
 using namespace std;
 
-EdgeHeap::EdgeHeap(bool bClear = true)
+EdgeHeap::EdgeHeap(bool bClear)
 : bClear(bClear), stEHSize(0), root(nullptr)
 {
 

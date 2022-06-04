@@ -1,48 +1,68 @@
 #include "Reader.h"
 
-#include <iostream>
-#include <fstream>
-
 using namespace std;
 
-IncidentMatrix* Reader::readMatrix(string sFileName)
+Reader::Reader(string basePath)
+	: basePath(basePath) {}
+
+IncidentMatrix* Reader::readMatrixGraph(string fileName)
 {
-	size_t stEdgeNumber;
-	size_t stVertexNumber;
-	size_t* stData;
+	size_t edgeNumber, vertexNumber;
+	size_t* data;
 
-	ifstream file(sFileName);
+	tie(edgeNumber, vertexNumber, data) = this->readData(fileName);
 
-	file >> stEdgeNumber >> stVertexNumber;
-
-	stData = new size_t[stEdgeNumber * 3];
-
-	for (size_t i = 0; i < stEdgeNumber; i++)
+	if (data == nullptr)
 	{
-		file >> stData[i];
+		return nullptr;
 	}
-	IncidentMatrix* imMatrix = new IncidentMatrix(stEdgeNumber, stVertexNumber, stData);
-	delete[] stData;
-	return imMatrix;
+
+	IncidentMatrix* matrix = new IncidentMatrix(edgeNumber, vertexNumber, data);
+
+	delete[] data;
+
+	return matrix;
 }
 
-NeighborhoodList* Reader::readList(string sFileName)
+NeighborhoodList* Reader::readListGraph(string fileName)
 {
-	size_t stEdgeNumber;
-	size_t stVertexNumber;
-	size_t* stData;
+	size_t edgeNumber, vertexNumber;
+	size_t* data;
 
-	ifstream file(sFileName);
+	tie(edgeNumber, vertexNumber, data) = this->readData(fileName);
 
-	file >> stEdgeNumber >> stVertexNumber;
-
-	stData = new size_t[stEdgeNumber * 3];
-
-	for (size_t i = 0; i < stEdgeNumber; i++)
+	if (data == nullptr)
 	{
-		file >> stData[i];
+		return nullptr;
 	}
-	NeighborhoodList* nlList = new NeighborhoodList(stEdgeNumber, stVertexNumber, stData);
-	delete[] stData;
-	return nlList;
+
+	NeighborhoodList* list = new NeighborhoodList(edgeNumber, vertexNumber, data);
+
+	delete[] data;
+
+	return list;
+}
+
+tuple<size_t, size_t, size_t*> Reader::readData(string fileName)
+{
+	ifstream file(this->basePath + fileName);
+
+	if (file.fail())
+	{
+		return make_tuple(-1, -1, nullptr);
+	}
+
+	size_t edgeNumber, vertexNumber;
+
+	file >> edgeNumber >> vertexNumber;
+
+	size_t dataSize = edgeNumber * 3;
+	size_t* data = new size_t[dataSize];
+
+	for (size_t i = 0; i < dataSize; i++)
+	{
+		file >> data[i];
+	}
+
+	return make_tuple(edgeNumber, vertexNumber, data);
 }

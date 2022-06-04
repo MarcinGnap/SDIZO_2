@@ -7,6 +7,7 @@
 
 class Prim
 {
+public:
 	static IncidentMatrix* generateMst(IncidentMatrix* incidentMatrix);
 	static NeighborhoodList* generateMst(NeighborhoodList* neighborhoodList);
 };
