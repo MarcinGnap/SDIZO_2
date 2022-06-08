@@ -19,25 +19,25 @@ int main()
 
 	//mainWindow noweOkno;
 
-	string basePath = "D:\Foldery vD\Studia\sem 4\Projekt SDIZO 2\pt_p_13_15-k02_10j-258953_lista_2\pt_p_13_15-k02_10j-258953_lista_2/";
+	//string basePath = "D:\Foldery vD\Studia\sem 4\Projekt SDIZO 2\pt_p_13_15-k02_10j-258953_lista_2\pt_p_13_15-k02_10j-258953_lista_2/";
 
-	Reader reader(basePath);
+	Reader reader;
 
 	auto fileName = "graph_txt.txt";
 
 	auto from = 0;
 	auto to = 0;
 
-	auto matrix = reader.readMatrixGraph(fileName);
+	auto matrix = reader.readerForMatrix(fileName);
 
 	matrix->print(cout);
 
-	auto list = reader.readListGraph(fileName);
+	auto list = reader.readerForList(fileName);
 
 	list->print();
 
 	cout << "Dijkstra" << endl;
-	/*
+	
 	auto dijkstraMatrixPath = Dijkstra::findShortestPath(matrix, from, to);
 	dijkstraMatrixPath.print(cout);
 
@@ -55,7 +55,7 @@ int main()
 	cout << "Kruskal" << endl;
 
 	auto kruskalMatrixMst = Kruskal::generateMst(matrix);
-	kruskalMatrixMst->print();
+	kruskalMatrixMst->print(cout);
 	delete kruskalMatrixMst;
 
 	auto kruskalListMst = Kruskal::generateMst(list);
@@ -65,7 +65,7 @@ int main()
 	cout << "Prim" << endl;
 
 	auto primMatrixMst = Prim::generateMst(matrix);
-	primMatrixMst->print();
+	primMatrixMst->print(cout);
 	delete primMatrixMst;
 
 	auto primListMst = Prim::generateMst(list);
@@ -74,7 +74,7 @@ int main()
 
 	delete matrix;
 	delete list;
-	*/
+	
 	//noweOkno.mainMenu();
 
 	return 0;

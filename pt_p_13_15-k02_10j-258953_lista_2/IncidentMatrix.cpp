@@ -53,7 +53,7 @@ IncidentMatrix::~IncidentMatrix()
 void IncidentMatrix::print(ostream& out)
 {
 
-	/*cout << std::endl << "v  ";
+	cout << std::endl << "v  ";
 
 	for (size_t i = 0; i < this->edgeNumber; i++)
 	{
@@ -83,34 +83,7 @@ void IncidentMatrix::print(ostream& out)
 		}
 		cout << endl;
 	}
-	cout << endl;*/
-	out << "   ";
-
-	for (size_t i = 0; i < this->edgeNumber; i++)
-	{
-		out << setw(2) << i << "   ";
-	}
-
-	out << endl;
-
-	for (size_t i = 0; i < this->vertexNumber; i++)
-	{
-		out << i << "  ";
-		for (size_t j = 0; j < this->edgeNumber; j++)
-		{
-			out << setw(2) << int(this->matrixHandler[i][j]) << " | ";
-		}
-		out << endl;
-	}
-
-	out << "v  ";
-
-	for (size_t i = 0; i < this->edgeNumber; i++)
-	{
-		out << setw(2) << this->edgeValues[i] << " | ";
-	}
-
-	out << endl;
+	cout << endl;
 }
 
 size_t IncidentMatrix::getVertexNumber()
