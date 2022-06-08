@@ -2,6 +2,11 @@
 
 using namespace std;
 
+IncidentMatrix::IncidentMatrix()
+{
+
+}
+
 //	Kontruktor.
 IncidentMatrix::IncidentMatrix(size_t edgeNumber, size_t vertexNumber, size_t* data)
 {
@@ -50,7 +55,7 @@ IncidentMatrix::~IncidentMatrix()
 }
 
 //	Wyœwietlenie macierzy.
-void IncidentMatrix::print(ostream& out)
+void IncidentMatrix::print()
 {
 
 	cout << std::endl << "v  ";

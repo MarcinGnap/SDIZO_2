@@ -5,6 +5,7 @@
 class NeighborhoodList
 {
 public:
+	NeighborhoodList();
 	NeighborhoodList(size_t edgeNumber, size_t vertexNumber, size_t* data);
 	~NeighborhoodList();
 	void print();

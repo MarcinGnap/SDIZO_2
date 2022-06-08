@@ -4,6 +4,11 @@
 
 using namespace std;
 
+NeighborhoodList::NeighborhoodList()
+{
+
+}
+
 //	Konstruktor
 NeighborhoodList::NeighborhoodList(size_t edgeNumber, size_t vertexNumber, size_t* data)
 {
