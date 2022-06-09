@@ -276,8 +276,60 @@ void mainWindow::mainMenu()
 			cout << "Fourth done\n";
 			cout << "For " << fifthVertexNumber << "...\n";
 			testsPrim(trialsNumber, fifthVertexNumber);
-			cout << "Fifth done\n"
-					"All done...\n";
+			cout << "Fifth done\n";
+
+			cout << "Kruskal:\n";
+			cout << "For " << firstVertexNumber << "...\n";
+			testsKruskal(trialsNumber, firstVertexNumber);
+			cout << "First done\n";
+			cout << "For " << secondVertexNumber << "...\n";
+			testsKruskal(trialsNumber, secondVertexNumber);
+			cout << "Second done\n";
+			cout << "For " << thirdVertexNumber << "...\n";
+			testsKruskal(trialsNumber, thirdVertexNumber);
+			cout << "Third done\n";
+			cout << "For " << fourthVertexNumber << "...\n";
+			testsKruskal(trialsNumber, fourthVertexNumber);
+			cout << "Fourth done\n";
+			cout << "For " << fifthVertexNumber << "...\n";
+			testsKruskal(trialsNumber, fifthVertexNumber);
+			cout << "Fifth done\n";
+
+			cout << "Dijkstra:\n";
+			cout << "For " << firstVertexNumber << "...\n";
+			testsDijkstra(trialsNumber, firstVertexNumber);
+			cout << "First done\n";
+			cout << "For " << secondVertexNumber << "...\n";
+			testsDijkstra(trialsNumber, secondVertexNumber);
+			cout << "Second done\n";
+			cout << "For " << thirdVertexNumber << "...\n";
+			testsDijkstra(trialsNumber, thirdVertexNumber);
+			cout << "Third done\n";
+			cout << "For " << fourthVertexNumber << "...\n";
+			testsDijkstra(trialsNumber, fourthVertexNumber);
+			cout << "Fourth done\n";
+			cout << "For " << fifthVertexNumber << "...\n";
+			testsDijkstra(trialsNumber, fifthVertexNumber);
+			cout << "Fifth done\n";
+
+			cout << "Bellman Ford:\n";
+			cout << "For " << firstVertexNumber << "...\n";
+			testsBellmanFord(trialsNumber, firstVertexNumber);
+			cout << "First done\n";
+			cout << "For " << secondVertexNumber << "...\n";
+			testsBellmanFord(trialsNumber, secondVertexNumber);
+			cout << "Second done\n";
+			cout << "For " << thirdVertexNumber << "...\n";
+			testsBellmanFord(trialsNumber, thirdVertexNumber);
+			cout << "Third done\n";
+			cout << "For " << fourthVertexNumber << "...\n";
+			testsBellmanFord(trialsNumber, fourthVertexNumber);
+			cout << "Fourth done\n";
+			cout << "For " << fifthVertexNumber << "...\n";
+			testsBellmanFord(trialsNumber, fifthVertexNumber);
+			cout << "Fifth done\n";
+
+			cout <<	"All done...\n";
 
 			shw.done();
 			break;
@@ -467,15 +519,15 @@ void mainWindow::testsPrim(size_t trialsNumber, size_t vertexNumber)
 
 	cout << "Czas przeprowadzania algorytmu Prima dla macierzy:\n"
 		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fMatrixAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sMatrixAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tMatrixAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cMatrixAvg << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << endl;
 
 	cout << "Czas przeprowadzania algorytmu Prima dla listy:\n"
 		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fListAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sListAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tListAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cListAvg << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << endl;
 }
 
 void mainWindow::testsKruskal(size_t trialsNumber, size_t vertexNumber)
@@ -647,17 +699,17 @@ void mainWindow::testsKruskal(size_t trialsNumber, size_t vertexNumber)
 
 	cListAvg = cListAvg / trialsNumber;
 
-	cout << "Czas przeprowadzania algorytmu Prima dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fMatrixAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sMatrixAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tMatrixAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cMatrixAvg << endl;
+	cout << "Czas przeprowadzania algorytmu Kruskala dla macierzy:\n"
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << endl;
 
-	cout << "Czas przeprowadzania algorytmu Prima dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fListAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sListAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tListAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cListAvg << endl;
+	cout << "Czas przeprowadzania algorytmu Kruskala dla listy:\n"
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << endl;
 }
 
 void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
@@ -690,7 +742,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fMatrixAvg = fMatrixAvg + tMTests.tMTest(o1, o2);
@@ -708,7 +760,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fListAvg = fListAvg + tMTests.tMTest(o1, o2);
@@ -727,7 +779,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sMatrixAvg = sMatrixAvg + tMTests.tMTest(o1, o2);
@@ -745,7 +797,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sListAvg = sListAvg + tMTests.tMTest(o1, o2);
@@ -764,7 +816,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tMatrixAvg = tMatrixAvg + tMTests.tMTest(o1, o2);
@@ -782,7 +834,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tListAvg = tListAvg + tMTests.tMTest(o1, o2);
@@ -801,7 +853,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cMatrixAvg = cMatrixAvg + tMTests.tMTest(o1, o2);
@@ -819,7 +871,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cListAvg = cListAvg + tMTests.tMTest(o1, o2);
@@ -829,7 +881,7 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 
 	cListAvg = cListAvg / trialsNumber;
 
-	cout << "Czas przeprowadzania algorytmu Prima dla macierzy:\n"
+	cout << "Czas przeprowadzania algorytmu Dijkstry dla macierzy:\n"
 		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fMatrixAvg << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sMatrixAvg << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tMatrixAvg << endl;
@@ -872,7 +924,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fMatrixAvg = fMatrixAvg + tMTests.tMTest(o1, o2);
@@ -890,7 +942,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fListAvg = fListAvg + tMTests.tMTest(o1, o2);
@@ -909,7 +961,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sMatrixAvg = sMatrixAvg + tMTests.tMTest(o1, o2);
@@ -927,7 +979,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sListAvg = sListAvg + tMTests.tMTest(o1, o2);
@@ -946,7 +998,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tMatrixAvg = tMatrixAvg + tMTests.tMTest(o1, o2);
@@ -964,7 +1016,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tListAvg = tListAvg + tMTests.tMTest(o1, o2);
@@ -983,7 +1035,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixMst = Prim::generateMst(tempMatrix);
+		auto tempMatrixPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cMatrixAvg = cMatrixAvg + tMTests.tMTest(o1, o2);
@@ -1001,7 +1053,7 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListMst = Prim::generateMst(tempList);
+		auto tempListPath = ;
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cListAvg = cListAvg + tMTests.tMTest(o1, o2);
