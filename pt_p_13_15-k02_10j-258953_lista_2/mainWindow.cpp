@@ -523,13 +523,13 @@ void mainWindow::testsPrim(size_t trialsNumber, size_t vertexNumber)
 	cListAvg = cListAvg / trialsNumber;
 
 	cout << "Czas przeprowadzania algorytmu Prima dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
 	cout << "Czas przeprowadzania algorytmu Prima dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
@@ -705,13 +705,13 @@ void mainWindow::testsKruskal(size_t trialsNumber, size_t vertexNumber)
 	cListAvg = cListAvg / trialsNumber;
 
 	cout << "Czas przeprowadzania algorytmu Kruskala dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
 	cout << "Czas przeprowadzania algorytmu Kruskala dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
@@ -903,13 +903,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	cListAvg = cListAvg / trialsNumber;
 
 	cout << "Czas przeprowadzania algorytmu Dijkstry dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
 	cout << "Czas przeprowadzania algorytmu Dijkstry dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fListAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
@@ -1101,13 +1101,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	cListAvg = cListAvg / trialsNumber;
 
 	cout << "Czas przeprowadzania algorytmu Bellmana Forda dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
 	cout << "Czas przeprowadzania algorytmu Bellmana Forda dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
+			"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
 	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
