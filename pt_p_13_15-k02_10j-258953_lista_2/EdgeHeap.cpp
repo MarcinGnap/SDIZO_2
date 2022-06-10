@@ -12,75 +12,86 @@ EdgeHeap::EdgeHeap(bool bClear)
 
 EdgeHeap::~EdgeHeap()
 {
+	//	Sprawdzenie czy rozmiar nie jest równy 0.
 	if (this->stEHSize == 0)
 	{
 		return;
 	}
 
+	//	Sprawdzenie czy flaga obs³uguj¹ca czysczenie jest ustawiona.
 	if (this->bClear)
 	{
+		//	Usuniêcie krawêdzi.
 		for (size_t i = 0; i < this->stEHSize; i++)
 		{
 			delete this->root[i];
 		}
 	}
+	//	Usuniêcie korzenia.
 	delete[] this->root;
 }
 
 void EdgeHeap::push(Edge* edge)
 {
+	//	Sprawdzenie czy rozmiar jest równy 0.
 	if (this->stEHSize == 0)
 	{
+		//	Stworzenie nowego korzenia.
 		this->stEHSize++;
 		this->root = new Edge *[this->stEHSize];
 		this->root[0] = edge;
 		return;
 	}
+	//	Skopiwanie istniej¹cych krawêdzi.
 	Edge** tempEdge = new Edge *[this->stEHSize + 1];
-
 	for (size_t i = 0; i < this->stEHSize; i++)
 	{
 		tempEdge[i] = this->root[i];
 	}
+	//	Usuniêcie starego korzenia i przypisanie korzeniowi nowego adresu.
 	delete[] this->root;
 	this->root = tempEdge;
 	this->root[stEHSize] = edge;
 	this->stEHSize++;
-
+	//	Naprawa kopca.
 	HeapifyUp();
 }
 
 Edge* EdgeHeap::pop()
 {
+	//	Sprawdzenie czy rozmiar jest równy 0;
 	if (this->stEHSize == 0)
 	{
 		return nullptr;
 	}
-
+	//	Wybranie pierwszeego elementu kopca (krawêdzi).
 	Edge* edgeToReturn = this->root[0];
-
+	//	Sprawdzenie czy rozmiar kopca jest równy 1.
 	if (this->stEHSize == 1)
 	{
+		//	Usuniêcie korzenia.
 		this->stEHSize--;
 		delete[] this->root;
 		this->root = nullptr;
-
+		//	Zwrócenie krawêdzi.
 		return edgeToReturn;
 	}
+	//	Przeniesienie ostatniego elementu kopca do korzenia.
 	this->root[0] = this->root[this->stEHSize - 1];
 	this->stEHSize--;
-
+	//	Stworzenie tymczasowej zmiennej.
 	Edge** tempEdge = new Edge *[this->stEHSize];
-
+	//	Skopiowanie istniej¹cych krawêdzi.
 	for (size_t i = 0; i < this->stEHSize; i++)
 	{
 		tempEdge[i] = this->root[i];
 	}
+	//	Usuniêcie wartoœci przypisanej do poprzedniego korzenia.
 	delete[] this->root;
 	this->root = tempEdge;
-
+	//	Naprawienie kopca.
 	this->HeapifyDown();
-
+	//	Swrócenie krawêdzi.
 	return edgeToReturn;
 }
 

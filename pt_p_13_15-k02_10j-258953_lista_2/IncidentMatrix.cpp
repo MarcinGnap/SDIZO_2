@@ -10,15 +10,17 @@ IncidentMatrix::IncidentMatrix()
 //	Kontruktor.
 IncidentMatrix::IncidentMatrix(size_t edgeNumber, size_t vertexNumber, size_t* data)
 {
-	this->vertexNumber = vertexNumber;											//	Liczba wierzcho³ków.
-	this->edgeNumber = edgeNumber;												//	Liczba krawêdzi.
-	this->edgeValues = new size_t[edgeNumber];									//	Tablica przechowuj¹ca wagi krawêdzi.
-	this->matrixHandler = new CellType*[vertexNumber];							//	Macierz.
-
-	for (size_t i = 0; i < vertexNumber; i++)									//	Tworzenie dwuwymiarowej tablicy wype³nionej zerami.
+	//	Deklaracja zmiennych.
+	this->vertexNumber = vertexNumber;
+	this->edgeNumber = edgeNumber;
+	this->edgeValues = new size_t[edgeNumber];
+	this->matrixHandler = new CellType*[vertexNumber];
+	//	Iteracja przez wszystkie wierzcho³ki.
+	for (size_t i = 0; i < vertexNumber; i++)
 	{
+		//	Stworzenie nowej tablicy.
 		this->matrixHandler[i] = new CellType[edgeNumber];
-
+		//	Wype³nienie tablicy pustymi komórkami.
 		for (size_t j = 0; j < edgeNumber; j++)
 		{
 			this->matrixHandler[i][j] = CellType::empty;
@@ -30,6 +32,7 @@ IncidentMatrix::IncidentMatrix(size_t edgeNumber, size_t vertexNumber, size_t* d
 	int valueIndex = 0;
 	for (size_t i = 0; i < edgeNumber; i++)
 	{
+		//	Odczytanie danych z wejœcia.
 		auto value = data[dataIndex];
 		this->matrixHandler[data[dataIndex]][i] = CellType::origin;
 		dataIndex++;

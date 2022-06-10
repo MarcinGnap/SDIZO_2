@@ -35,7 +35,7 @@ void Array<T>::addFront(const T& data)
 	T* newHead = new T[this->size + 1];
 	newHead[0] = data;
 
-	// Copy data if exists
+	//	Kopiowanie, jeœli dane istniej¹.
 	if (this->head != nullptr)
 	{
 		for (size_t i = 0; i < this->size; i++)
@@ -43,7 +43,7 @@ void Array<T>::addFront(const T& data)
 			newHead[i + 1] = this->head[i];
 		}
 
-		// Delete old dynamic array
+		//	Usuniêcie starej tablicy.
 		delete[] this->head;
 	}
 
@@ -57,7 +57,7 @@ void Array<T>::addBack(const T& data)
 	T* newHead = new T[this->size + 1];
 	newHead[this->size] = data;
 
-	// Copy data if exists
+	//	Kopiowanie, jeœli dane istniej¹.
 	if (this->head != nullptr)
 	{
 		for (size_t i = 0; i < this->size; i++)
@@ -65,7 +65,7 @@ void Array<T>::addBack(const T& data)
 			newHead[i] = this->head[i];
 		}
 
-		// Delete old dynamic array
+		//	Usuniêcie starej tablicy.
 		delete[] this->head;
 	}
 
@@ -76,7 +76,7 @@ void Array<T>::addBack(const T& data)
 template <typename T>
 bool Array<T>::addAt(const size_t& index, const T& data)
 {
-	// Check if index is correct
+	//	Sprawdzenie czy indeks jest poprawny.
 	if (index > this->size)
 	{
 		return false;
@@ -85,13 +85,13 @@ bool Array<T>::addAt(const size_t& index, const T& data)
 	T* newHead = new T[this->size + 1];
 	newHead[index] = data;
 
-	// Copy elements before specific index
+	//	Skopiowanie elementów znajduj¹cych siê przed konkretnym indeksem.
 	for (size_t i = 0; i < index; i++)
 	{
 		newHead[i] = this->head[i];
 	}
 
-	// Copy elements after specific index
+	//	Skopiowanie elementów znajduj¹cych siê po konkretnym indeksem.
 	for (size_t i = index + 1; i <= size; i++)
 	{
 		newHead[i] = this->head[i - 1];
@@ -125,7 +125,7 @@ bool Array<T>::search(const T& data)
 template <typename T>
 bool Array<T>::removeFront()
 {
-	// Check if any data exists
+	//	Sprawdzenie czy w tablicy znajduj¹ siê jakiekolwiek dane.
 	if (this->head == nullptr)
 	{
 		return false;
@@ -133,7 +133,7 @@ bool Array<T>::removeFront()
 
 	T* newHead = nullptr;
 
-	// Copy data if needed
+	//	Skopiowanie danych.
 	if (this->size > 1)
 	{
 		newHead = new T[size - 1];
@@ -152,7 +152,7 @@ bool Array<T>::removeFront()
 template <typename T>
 bool Array<T>::removeBack()
 {
-	// Check if any data exists
+	//	Sprawdzenie czy w tablicy znajduj¹ siê jakiekolwiek dane.
 	if (this->head == nullptr)
 	{
 		return false;
@@ -161,7 +161,7 @@ bool Array<T>::removeBack()
 	T* newHead = nullptr;
 	this->size--;
 
-	// Copy data if needed
+	// Skopiowanie danych.
 	if (this->size >= 1)
 	{
 		newHead = new T[size];
@@ -179,7 +179,7 @@ bool Array<T>::removeBack()
 template <typename T>
 bool Array<T>::removeAt(const size_t& index)
 {
-	// Check if index is correct
+	//	Sprawdzenie czy indeks jest poprawny.
 	if (index >= this->size)
 	{
 		return false;
@@ -187,18 +187,18 @@ bool Array<T>::removeAt(const size_t& index)
 
 	T* newHead = nullptr;
 
-	// Copy data if needed
+	//	Skopiowanie danych.
 	if (this->size > 1)
 	{
 		newHead = new T[size - 1];
 
-		// Copy data before index
+		//	Skopiowanie elementów znajduj¹cych siê przed konkretnym indeksem.
 		for (size_t i = 0; i < index; i++)
 		{
 			newHead[i] = this->head[i];
 		}
 
-		// Copy data after index
+		//	Skopiowanie elementów znajduj¹cych siê po konkretnym indeksem.
 		for (size_t i = index + 1; i < size; i++)
 		{
 			newHead[i - 1] = this->head[i];
@@ -231,5 +231,5 @@ size_t Array<T>::getSize()
 	return this->size;
 }
 
-// The only one data type necessary in this project
+//	Jedyny typ danych przydatny w tym projekcie.
 template class Array<PathEdge>;

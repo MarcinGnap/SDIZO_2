@@ -45,6 +45,7 @@ RawGraphData Generator::generate(float density, size_t vertexNumber, size_t maxV
 	existConnection[minumumEdgeNumber - 1][0] = true;
 	existConnection[0][minumumEdgeNumber - 1] = true;
 
+	//	Wygenerowanie pozosta³ych krawêdzi.
 	size_t origin;
 	size_t destination;
 	for (size_t i = minumumEdgeNumber; i < edgeNumber; i++)
@@ -66,12 +67,14 @@ RawGraphData Generator::generate(float density, size_t vertexNumber, size_t maxV
 		existConnection[destination][origin] = true;
 	}
 
+	//	Usuniêcie tablicy utworzonej na pocz¹tku metody.
 	for (size_t i = 0; i < edgeNumber; i++)
 	{
 		delete[] existConnection[i];
 	}
 	delete[] existConnection;
 
+	//	Stworzenie obiektu przechowuj¹cego wynik.
 	RawGraphData result;
 	result.data = data;
 	result.vertexNumber = vertexNumber;

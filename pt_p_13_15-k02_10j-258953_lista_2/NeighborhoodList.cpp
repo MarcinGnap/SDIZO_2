@@ -12,36 +12,39 @@ NeighborhoodList::NeighborhoodList()
 //	Konstruktor
 NeighborhoodList::NeighborhoodList(size_t edgeNumber, size_t vertexNumber, size_t* data)
 {
-	this->edgeNumber = edgeNumber;							//	Liczba krawêdzi.
-	this->vertexNumber = vertexNumber;						//	Liczba wierzcho³ków.
-	this->edges = new Edge*[vertexNumber];					//	Tablica przechowuj¹ca krawêdzie.
-
-	for (size_t i = 0; i < vertexNumber; i++)				//	Wyzerowanie tablicy.
+	//	Deklaracja zmiennych.
+	this->edgeNumber = edgeNumber;
+	this->vertexNumber = vertexNumber;	
+	this->edges = new Edge*[vertexNumber];
+	//	Iteracja przez wszystkie wierzcho³ki.
+	for (size_t i = 0; i < vertexNumber; i++)
 	{
 		this->edges[i] = nullptr;
 	}
 
-	Edge* edge = nullptr;									//	Stworzenie krawêdzi.
-	size_t dataNumber = 3 * edgeNumber;						//	Iloœæ przechowywanych liczb.
-	size_t currentIndex = 0;								//	Pomocnicza zmienna wykorzystywana w pêtli.
+	Edge* edge = nullptr;
+	size_t dataNumber = 3 * edgeNumber;
+	size_t currentIndex = 0;
 
-	while (currentIndex < dataNumber)						//	Pêtla wykonuj¹ca siê dopóki nie skoñcz¹ siê dane w podanej tablicy.
+	while (currentIndex < dataNumber)
 	{
-		auto test = data[currentIndex];
+		//	Pozyskanie krawêdzi z tablicy.
+		//auto test = data[currentIndex];
 		edge = this->edges[data[currentIndex]];
-
+		//	Sprawdzenie czy istniej¹ jakiekolwiek krawêdzie.
 		if (edge == nullptr)
 		{
+			//	Stworzenie nowej krawêdzi.
 			this->edges[data[currentIndex]] = new Edge(data[currentIndex], data[currentIndex + 1], data[currentIndex + 2]);
 			currentIndex += 3;
 			continue;
 		}
-
+		//	Znalezienie ostatniej istniej¹cej krawêdzi.
 		while (edge->next != nullptr)
 		{
 			edge = edge->next;
 		}
-
+		//	Stworzenie nowej krawêdzi.
 		edge->next = new Edge(data[currentIndex], data[currentIndex + 1], data[currentIndex + 2]);
 		edge->next->previous = edge;
 		currentIndex += 3;
@@ -53,24 +56,29 @@ NeighborhoodList::~NeighborhoodList()
 {
 	if (this->edges != nullptr)
 	{
-		Edge* edgeToDelete = nullptr;									//	Stworzenie tymczasowej krawêdzi bez zawartoœci w celu usprawnienia usuwania listy.
-		for (size_t i = 0; i < this->vertexNumber; i++)					//	Pêtla wykonuj¹ca siê od pierwszego do ostatniego wierzcho³ka.
+		//	Stworzenie tymczasowej krawêdzi bez zawartoœci w celu usprawnienia usuwania listy.
+		Edge* edgeToDelete = nullptr;
+		//	Pêtla wykonuj¹ca siê od pierwszego do ostatniego wierzcho³ka.
+		for (size_t i = 0; i < this->vertexNumber; i++)
 		{
-			edgeToDelete = this->edges[i];								//	Przypisujemy aktualnie usuwan¹ krawêdŸ do tymczasowej zmiennej.
-
-			if (edgeToDelete == nullptr)								//	Jeœli krawêdŸ nie ma zawartoœci to pêtla zostaje przesuniêta do nastêpnego kroku.
+			//	Pozyskanie pierwszej krawêdzi.
+			edgeToDelete = this->edges[i];
+			//	Sprawdzenie czy krawêdŸ ma zawartoœæ.
+			if (edgeToDelete == nullptr)
 			{
 				continue;
 			}
-
-			while (edgeToDelete->next != nullptr)						//	Jeœli jest kolejna krawêdŸ do usuniêcia pêtla siê wykona.
+			//	Iteracja przez wszystkie przechowywane krawêdzie.
+			while (edgeToDelete->next != nullptr)
 			{
-				edgeToDelete = edgeToDelete->next;						//	Zmiana adresu usuwanej krawêdzi na kolejn¹ krawêdŸ.
-				delete edgeToDelete->previous;							//	Usuwamy jedn¹ krawêdŸ.
+				//	Usuniêcie krawêdzi.
+				edgeToDelete = edgeToDelete->next;
+				delete edgeToDelete->previous;
 			}
 			delete edgeToDelete;
 		}
-		delete[] this->edges;											//	Po usuniêiu zawartoœci tablicy zawieraj¹cej dane krawêdzi, usuwamy tablicê.
+		//	Usuniêcie tablicy przechowuj¹cej krawêdzie.
+		delete[] this->edges;
 	}
 }
 
@@ -78,13 +86,13 @@ NeighborhoodList::~NeighborhoodList()
 void NeighborhoodList::print()
 {
 	Edge* edge = nullptr;
-
+	//	Iteracja przez wszystkie wierzcho³ki.
 	for (size_t i = 0; i < this->vertexNumber; i++)
 	{
 		cout << i << " --> ";
-
+		//	Pozyskanie krawêdzi.
 		edge = this->edges[i];
-
+		//	Sprawdzenie czy krawêdŸ istnieje.
 		if (edge == nullptr)
 		{
 			cout << std::endl;
@@ -93,6 +101,7 @@ void NeighborhoodList::print()
 
 		while (edge != nullptr)
 		{
+			//	Wyœwietlenie krawêdzi.
 			cout << "  " << edge->destination << '[' << "  " << edge->value << "] | ";
 			edge = edge->next;
 		}
