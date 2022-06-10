@@ -96,14 +96,19 @@ void mainWindow::mainMenu()
 
 			auto o1 = chrono::high_resolution_clock::now();
 			RawGraphData newData = newGenerator->generate(fDensity, stVertexNum, stMaxValue);
+
 			auto o2 = chrono::high_resolution_clock::now();
 
 			newMatrix = new IncidentMatrix(newData.edgeNumber, newData.vertexNumber, newData.data);
 			newList = new NeighborhoodList(newData.edgeNumber, newData.vertexNumber, newData.data);
 			auto o3 = chrono::high_resolution_clock::now();
 
-			cout << "Wygenerowanie danych zajelo:\n" << tM.tMShort(o1, o2) << endl;
-			cout << "Zbudowanie z dostepnych danych macierzy i listy zajelo:\n" << tM.tMShort(o2, o3) << endl;
+			newMatrix->print();
+
+			newList->print();
+
+			cout << "\nWygenerowanie danych zajelo:\t" << tM.tMTest(o1, o2) << " nanosekund\n";
+			cout << "Zbudowanie z dostepnych danych macierzy i listy zajelo:\t" << tM.tMTest(o2, o3) << " nanosekund\n";
 
 			shw.done();
 			break;

@@ -61,7 +61,7 @@ IncidentMatrix::~IncidentMatrix()
 void IncidentMatrix::print()
 {
 
-	cout << std::endl << "v  ";
+	cout << std::endl << "v    ";
 
 	for (size_t i = 0; i < this->edgeNumber; i++)
 	{
