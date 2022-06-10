@@ -518,16 +518,16 @@ void mainWindow::testsPrim(size_t trialsNumber, size_t vertexNumber)
 	cListAvg = cListAvg / trialsNumber;
 
 	cout << "Czas przeprowadzania algorytmu Prima dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fMatrixAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << endl;
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
 	cout << "Czas przeprowadzania algorytmu Prima dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fListAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << endl;
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
 }
 
 void mainWindow::testsKruskal(size_t trialsNumber, size_t vertexNumber)
@@ -700,16 +700,16 @@ void mainWindow::testsKruskal(size_t trialsNumber, size_t vertexNumber)
 	cListAvg = cListAvg / trialsNumber;
 
 	cout << "Czas przeprowadzania algorytmu Kruskala dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << endl;
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
 	cout << "Czas przeprowadzania algorytmu Kruskala dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << endl;
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
 }
 
 void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
@@ -738,11 +738,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(firstDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = Dijkstra::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fMatrixAvg = fMatrixAvg + tMTests.tMTest(o1, o2);
@@ -756,11 +758,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(firstDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = Dijkstra::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fListAvg = fListAvg + tMTests.tMTest(o1, o2);
@@ -775,11 +779,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(secondDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = Dijkstra::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sMatrixAvg = sMatrixAvg + tMTests.tMTest(o1, o2);
@@ -793,11 +799,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(secondDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = Dijkstra::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sListAvg = sListAvg + tMTests.tMTest(o1, o2);
@@ -812,11 +820,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(thirdDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = Dijkstra::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tMatrixAvg = tMatrixAvg + tMTests.tMTest(o1, o2);
@@ -830,11 +840,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(thirdDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = Dijkstra::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tListAvg = tListAvg + tMTests.tMTest(o1, o2);
@@ -849,11 +861,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(fourthDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = Dijkstra::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cMatrixAvg = cMatrixAvg + tMTests.tMTest(o1, o2);
@@ -867,11 +881,13 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(fourthDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = Dijkstra::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cListAvg = cListAvg + tMTests.tMTest(o1, o2);
@@ -882,16 +898,16 @@ void mainWindow::testsDijkstra(size_t trialsNumber, size_t vertexNumber)
 	cListAvg = cListAvg / trialsNumber;
 
 	cout << "Czas przeprowadzania algorytmu Dijkstry dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fMatrixAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sMatrixAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tMatrixAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cMatrixAvg << endl;
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
-	cout << "Czas przeprowadzania algorytmu Prima dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fListAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sListAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tListAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cListAvg << endl;
+	cout << "Czas przeprowadzania algorytmu Dijkstry dla listy:\n"
+		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
 }
 
 void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
@@ -920,11 +936,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(firstDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = BellmanFord::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fMatrixAvg = fMatrixAvg + tMTests.tMTest(o1, o2);
@@ -938,11 +956,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(firstDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = BellmanFord::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		fListAvg = fListAvg + tMTests.tMTest(o1, o2);
@@ -957,11 +977,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(secondDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = BellmanFord::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sMatrixAvg = sMatrixAvg + tMTests.tMTest(o1, o2);
@@ -975,11 +997,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(secondDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = BellmanFord::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		sListAvg = sListAvg + tMTests.tMTest(o1, o2);
@@ -994,11 +1018,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(thirdDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = BellmanFord::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tMatrixAvg = tMatrixAvg + tMTests.tMTest(o1, o2);
@@ -1012,11 +1038,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(thirdDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = BellmanFord::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		tListAvg = tListAvg + tMTests.tMTest(o1, o2);
@@ -1031,11 +1059,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(fourthDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		IncidentMatrix* tempMatrix;
 		tempMatrix = new IncidentMatrix(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempMatrixPath = ;
+		auto tempMatrixPath = BellmanFord::findShortestPath(tempMatrix, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cMatrixAvg = cMatrixAvg + tMTests.tMTest(o1, o2);
@@ -1049,11 +1079,13 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 	{
 		size_t maxVal = rand();
 		RawGraphData tempData = tempGenerator->generate(fourthDensity, vertexNumber, maxVal);
+		size_t from = rand() % vertexNumber;
+		size_t to = rand() % vertexNumber;
 		NeighborhoodList* tempList;
 		tempList = new NeighborhoodList(tempData.edgeNumber, tempData.vertexNumber, tempData.data);
 
 		auto o1 = chrono::high_resolution_clock::now();
-		auto tempListPath = ;
+		auto tempListPath = BellmanFord::findShortestPath(tempList, from, to);
 		auto o2 = chrono::high_resolution_clock::now();
 
 		cListAvg = cListAvg + tMTests.tMTest(o1, o2);
@@ -1063,15 +1095,15 @@ void mainWindow::testsBellmanFord(size_t trialsNumber, size_t vertexNumber)
 
 	cListAvg = cListAvg / trialsNumber;
 
-	cout << "Czas przeprowadzania algorytmu Prima dla macierzy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fMatrixAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sMatrixAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tMatrixAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cMatrixAvg << endl;
+	cout << "Czas przeprowadzania algorytmu Bellmana Forda dla macierzy:\n"
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tMatrixAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cMatrixAvg << "\t nanosekund" << endl;
 
-	cout << "Czas przeprowadzania algorytmu Prima dla listy:\n"
-		"\t - dla gestosci " << firstDensity << " wynosi:\n \t" << fListAvg << endl;
-	cout << "\t - dla gestosci " << secondDensity << " wynosi:\n \t" << sListAvg << endl;
-	cout << "\t - dla gestosci " << thirdDensity << " wynosi:\n \t" << tListAvg << endl;
-	cout << "\t - dla gestosci " << fourthDensity << " wynosi:\n \t" << cListAvg << endl;
+	cout << "Czas przeprowadzania algorytmu Bellmana Forda dla listy:\n"
+		"\t - dla gestosci " << firstDensity << " wynosi: \t" << fListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << secondDensity << " wynosi: \t" << sListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << thirdDensity << " wynosi: \t" << tListAvg << "\t nanosekund" << endl;
+	cout << "\t - dla gestosci " << fourthDensity << " wynosi: \t" << cListAvg << "\t nanosekund" << endl;
 }

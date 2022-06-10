@@ -2,19 +2,23 @@
 
 using namespace std;
 
+//	Wylosowanie danych.
 RawGraphData Generator::generate(float density, size_t vertexNumber, size_t maxValue)
 {
+	//	Zadeklarowanie zmiennych przechowuj¹cych parametry generowanych danych.
 	size_t minumumEdgeNumber = vertexNumber;
 	size_t edgeNumber = (density * vertexNumber * (vertexNumber - 1)) / 2;
 	edgeNumber = edgeNumber > minumumEdgeNumber ? edgeNumber : minumumEdgeNumber;
 	size_t dataSize = 3 * edgeNumber;
 	size_t* data = new size_t[dataSize];
 
-	random_device seed;														//	Generator losowych liczb.
+	//	Generator 32-bitowych liczb pseudolosowych.
+	random_device seed;
 	mt19937 gen(seed());
 	uniform_int_distribution<size_t> values(1, maxValue);
 	uniform_int_distribution<size_t> vertices(0, vertexNumber - 1);
 
+	// Tablica przechowuj¹ca iinformacjê o krawêdziach.
 	bool** existConnection = new bool*[edgeNumber];
 	for (size_t i = 0; i < edgeNumber; i++)
 	{
@@ -25,6 +29,7 @@ RawGraphData Generator::generate(float density, size_t vertexNumber, size_t maxV
 		}
 	}
 
+	//	Po³¹czenie wszystkich wierzcho³ków.
 	for (size_t i = 0; i < minumumEdgeNumber - 1; i++)
 	{
 		data[3 * i] = i;
