@@ -1,4 +1,4 @@
-# projekt nr 1 SDIZO
+# projekt nr 2 SDIZO
 Menu:
 1. Wczytanie danych z pliku tekstowego
 2. Wygenerowanie danych losowo
