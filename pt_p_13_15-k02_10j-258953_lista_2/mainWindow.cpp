@@ -230,7 +230,7 @@ void mainWindow::mainMenu()
 		case 8:
 		{
 			size_t from, to;
-			cout << "Algorytm Forda-Bellmana.\n";
+			cout << "Algorytm Forda-Bellmana.\n"
 				"Wybierz wierzcholek startowy:\n";
 			cin >> from;
 			cout << "Wybierz wierzcholek koncowy:\n";
